@@ -725,6 +725,329 @@
       </div>
     </div>
 
+    <!-- Reservations Section -->
+    <section id="reservations" class="bg-white py-16 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2
+            class="text-3xl font-serif font-bold text-amber-800"
+            data-i18n="res_title"
+          >
+            Réservez une table ou un espace
+          </h2>
+          <p class="text-amber-900/60 mt-2" data-i18n="res_subtitle">
+            Profitez de notre ambiance chaleureuse pour vos repas ou événements
+            spéciaux
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Table Reservation Card -->
+          <div
+            class="bg-amber-50 rounded-2xl p-8 border border-amber-100 text-center hover:shadow-lg transition-shadow duration-300"
+          >
+            <div class="text-4xl mb-4">🍽️</div>
+            <h3
+              class="text-2xl font-bold text-amber-900 mb-3"
+              data-i18n="res_table_title"
+            >
+              Réserver une table
+            </h3>
+            <p class="text-amber-900/70 mb-6 h-12" data-i18n="res_table_desc">
+              Idéal pour le petit-déjeuner, le déjeuner ou le café de
+              l'après-midi.
+            </p>
+            <button
+              onclick="openModal('table-modal')"
+              class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-8 rounded-xl transition shadow-md w-full"
+              data-i18n="res_table_btn"
+            >
+              Réserver
+            </button>
+          </div>
+
+          <!-- Event Space Card -->
+          <div
+            class="bg-amber-50 rounded-2xl p-8 border border-amber-100 text-center hover:shadow-lg transition-shadow duration-300"
+          >
+            <div class="text-4xl mb-4">🎉</div>
+            <h3
+              class="text-2xl font-bold text-amber-900 mb-3"
+              data-i18n="res_event_title"
+            >
+              Privatiser l'espace
+            </h3>
+            <p class="text-amber-900/70 mb-6 h-12" data-i18n="res_event_desc">
+              Organisez vos événements privés ou professionnels dans notre
+              boulangerie.
+            </p>
+            <button
+              onclick="openModal('event-modal')"
+              class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-8 rounded-xl transition shadow-md w-full"
+              data-i18n="res_event_btn"
+            >
+              Demander un devis
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Modal -->
+    <div
+      id="table-modal"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4 hidden"
+    >
+      <div
+        class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto"
+      >
+        <button
+          onclick="closeModal('table-modal')"
+          class="absolute top-4 right-4 text-2xl text-amber-950/60 hover:text-amber-950"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl font-serif font-bold text-amber-800 mb-4">
+          🍽️ <span data-i18n="modal_table_title">Réservation de table</span>
+        </h3>
+        <form onsubmit="submitReservation(event)" class="space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label
+                class="block text-xs font-bold text-amber-800 uppercase mb-1"
+                data-i18n="modal_table_date"
+                >Date</label
+              >
+              <input
+                required
+                type="date"
+                class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-xs font-bold text-amber-800 uppercase mb-1"
+                data-i18n="modal_table_time"
+                >Heure</label
+              >
+              <input
+                required
+                type="time"
+                min="07:00"
+                max="19:00"
+                class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="modal_table_guests"
+              >Nombre de personnes</label
+            >
+            <input
+              required
+              type="number"
+              min="1"
+              max="10"
+              value="2"
+              class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="modal_table_name"
+              >Votre nom</label
+            >
+            <input
+              required
+              type="text"
+              class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="modal_table_phone"
+              >Téléphone</label
+            >
+            <input
+              required
+              type="tel"
+              class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="modal_table_req"
+              >Demandes spéciales</label
+            >
+            <textarea
+              rows="2"
+              class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 rounded-xl transition shadow-md mt-4"
+            data-i18n="modal_table_submit"
+          >
+            Confirmer la réservation
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div
+      id="event-modal"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4 hidden"
+    >
+      <div
+        class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto"
+      >
+        <button
+          onclick="closeModal('event-modal')"
+          class="absolute top-4 right-4 text-2xl text-amber-950/60 hover:text-amber-950"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl font-serif font-bold text-amber-800 mb-4">
+          🎉 <span data-i18n="modal_event_title">Demande de privatisation</span>
+        </h3>
+        <form onsubmit="submitReservation(event)" class="space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label
+                class="block text-xs font-bold text-amber-800 uppercase mb-1"
+                data-i18n="modal_event_date"
+                >Date de l'événement</label
+              >
+              <input
+                required
+                type="date"
+                class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-xs font-bold text-amber-800 uppercase mb-1"
+                data-i18n="modal_event_duration"
+                >Durée (heures)</label
+              >
+              <input
+                required
+                type="number"
+                min="1"
+                max="8"
+                value="2"
+                class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label
+                class="block text-xs font-bold text-amber-800 uppercase mb-1"
+                data-i18n="modal_event_guests"
+                >Participants</label
+              >
+              <input
+                required
+                type="number"
+                min="5"
+                max="50"
+                value="10"
+                class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-xs font-bold text-amber-800 uppercase mb-1"
+                data-i18n="modal_event_type"
+                >Type</label
+              >
+              <select
+                class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
+              >
+                <option>Corporate / B2B</option>
+                <option>Anniversaire / Fête</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="modal_event_name"
+              >Votre nom / Entreprise</label
+            >
+            <input
+              required
+              type="text"
+              class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="modal_event_phone"
+              >Téléphone</label
+            >
+            <input
+              required
+              type="tel"
+              class="w-full border border-amber-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 rounded-xl transition shadow-md mt-4"
+            data-i18n="modal_event_submit"
+          >
+            Envoyer la demande
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Success Reservation Modal -->
+    <div
+      id="success-res-modal"
+      class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4 hidden"
+    >
+      <div
+        class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl text-center space-y-4 relative"
+      >
+        <button
+          onclick="closeModal('success-res-modal')"
+          class="absolute top-4 right-4 text-2xl text-amber-950/60 hover:text-amber-950"
+        >
+          &times;
+        </button>
+        <div class="text-5xl">✅</div>
+        <h3
+          class="text-xl font-serif font-bold text-amber-800"
+          data-i18n="success_res_title"
+        >
+          Demande reçue !
+        </h3>
+        <p class="text-sm text-amber-950/80" data-i18n="success_res_desc">
+          Nous avons bien reçu votre demande de réservation. Nous vous
+          contacterons bientôt pour confirmer.
+        </p>
+        <button
+          onclick="closeModal('success-res-modal')"
+          class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-6 rounded-xl transition shadow-md"
+          data-i18n="success_btn"
+        >
+          Compris
+        </button>
+      </div>
+    </div>
+
     <!-- Reviews -->
     <section id="reviews" class="py-16 px-4 max-w-6xl mx-auto">
       <div class="text-center mb-12">
@@ -973,6 +1296,23 @@
         }
         totalSpan.textContent = `CHF ${total.toFixed(2)}`;
       }
+
+      function openModal(id) {
+        document.getElementById(id).classList.remove("hidden");
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.add("hidden");
+      }
+      function submitReservation(e) {
+        e.preventDefault();
+        // Hide all modals
+        document
+          .querySelectorAll(".fixed.inset-0")
+          .forEach((m) => m.classList.add("hidden"));
+        // Show success
+        document.getElementById("success-res-modal").classList.remove("hidden");
+      }
+
       function openCheckout() {
         document.getElementById("checkout-modal").classList.remove("hidden");
       }

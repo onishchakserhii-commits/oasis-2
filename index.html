@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boulangerie L'Oasis - Монтре, Швейцарія</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+      function filterMenu(category) {
+        // Update tabs
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+          tab.classList.remove('bg-amber-800', 'text-white');
+          tab.classList.add('bg-white', 'text-amber-800');
+        });
+        event.currentTarget.classList.remove('bg-white', 'text-amber-800');
+        event.currentTarget.classList.add('bg-amber-800', 'text-white');
+
+        // Filter items
+        const items = document.querySelectorAll('.menu-item');
+        items.forEach(item => {
+          if (category === 'all' || item.classList.contains(category)) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 50);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        });
+      }
+    </script>
     <style>
       .hero-bg {
         background-image:
@@ -141,188 +169,308 @@
             замовлення
           </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="bg-white p-6 rounded-xl shadow-sm border border-amber-100"
+
+        <!-- FILTER TABS -->
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+          <button
+            onclick="filterMenu('all')"
+            class="menu-tab active px-6 py-2 rounded-full bg-amber-800 text-white font-medium shadow-md transition hover:bg-amber-700"
           >
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">🥐</span>
-              <h3 class="text-xl font-bold text-amber-800">
-                Випічка та десерти
+            Всі страви
+          </button>
+          <button
+            onclick="filterMenu('pastry')"
+            class="menu-tab px-6 py-2 rounded-full bg-white text-amber-800 font-medium shadow-sm transition hover:bg-amber-50"
+          >
+            Випічка
+          </button>
+          <button
+            onclick="filterMenu('sandwich')"
+            class="menu-tab px-6 py-2 rounded-full bg-white text-amber-800 font-medium shadow-sm transition hover:bg-amber-50"
+          >
+            Сендвічі
+          </button>
+          <button
+            onclick="filterMenu('drink')"
+            class="menu-tab px-6 py-2 rounded-full bg-white text-amber-800 font-medium shadow-sm transition hover:bg-amber-50"
+          >
+            Напої
+          </button>
+        </div>
+
+        <div
+          class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          id="menu-grid"
+        >
+          <!-- ITEM 1 -->
+          <div
+            class="menu-item pastry group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Croissant"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
+              >
+                CHF 1.80
+              </div>
+            </div>
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+              >
+                Випічка
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">
+                Класичний круасан
               </h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Хрусткий зовні та ніжний всередині, випечений за традиційним
+                французьким рецептом.
+              </p>
+              <button
+                onclick="addToCart('Класичний круасан', 1.8)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
             </div>
-            <ul class="space-y-4 text-sm">
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Класичний круасан</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 1.80</span>
-                </div>
-                <button
-                  onclick="addToCart('Класичний круасан', 1.8)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Шоколадний хлібець (Pain au chocolat)</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 2.20</span>
-                </div>
-                <button
-                  onclick="addToCart('Pain au chocolat', 2.2)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Сіннабон з корицею</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 3.50</span>
-                </div>
-                <button
-                  onclick="addToCart('Сіннабон з корицею', 3.5)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-            </ul>
           </div>
+
+          <!-- ITEM 2 -->
           <div
-            class="bg-white p-6 rounded-xl shadow-sm border border-amber-100"
+            class="menu-item pastry group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">🥪</span>
-              <h3 class="text-xl font-bold text-amber-800">
-                Сендвічі та фокачча
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Pain au chocolat"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
+              >
+                CHF 2.20
+              </div>
+            </div>
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+              >
+                Випічка
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">
+                Pain au chocolat
               </h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Класичний шоколадний хлібець зі справжнім швейцарським
+                шоколадом.
+              </p>
+              <button
+                onclick="addToCart('Pain au chocolat', 2.2)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
             </div>
-            <ul class="space-y-4 text-sm">
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Сендвіч "Big Mexicano"
-                    <span
-                      class="bg-red-100 text-red-700 text-[10px] px-1.5 py-0.5 rounded font-bold ml-1"
-                      >Хіт</span
-                    ></span
-                  >
-                  <span class="font-bold text-amber-800">CHF 7.50</span>
-                </div>
-                <button
-                  onclick="addToCart('Сендвіч Big Mexicano', 7.5)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Сендвіч з шинкою</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 6.20</span>
-                </div>
-                <button
-                  onclick="addToCart('Сендвіч з шинкою', 6.2)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Фокачча з томатами</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 5.80</span>
-                </div>
-                <button
-                  onclick="addToCart('Фокачча з томатами', 5.8)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-            </ul>
           </div>
+
+          <!-- ITEM 3 -->
           <div
-            class="bg-white p-6 rounded-xl shadow-sm border border-amber-100"
+            class="menu-item pastry group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">☕</span>
-              <h3 class="text-xl font-bold text-amber-800">Кава та напої</h3>
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1509365465994-3e8933f39a7b?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Cinnabon"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
+              >
+                CHF 3.50
+              </div>
             </div>
-            <ul class="space-y-4 text-sm">
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
               >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Еспресо (Expresso)</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 3.20</span>
-                </div>
-                <button
-                  onclick="addToCart('Еспресо', 3.2)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
+                Випічка
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">
+                Сіннабон з корицею
+              </h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Пухка булочка з ароматною корицею та ніжним вершковим кремом.
+              </p>
+              <button
+                onclick="addToCart('Сіннабон з корицею', 3.5)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Капучино (Cappuccino)</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 4.10</span>
-                </div>
-                <button
-                  onclick="addToCart('Капучино', 4.1)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-              <li
-                class="flex flex-col border-b border-dashed border-amber-100 pb-2"
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ITEM 4 -->
+          <div
+            class="menu-item sandwich group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1619860860774-1e2855a32254?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Sandwich"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
               >
-                <div class="flex justify-between items-center">
-                  <span class="font-medium text-amber-900"
-                    >Гарячий шоколад</span
-                  >
-                  <span class="font-bold text-amber-800">CHF 4.20</span>
-                </div>
-                <button
-                  onclick="addToCart('Гарячий шоколад', 4.2)"
-                  class="self-end mt-2 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded transition"
-                >
-                  Додати
-                </button>
-              </li>
-            </ul>
+                CHF 7.50
+              </div>
+              <div
+                class="absolute top-3 left-3 bg-red-500 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shadow-sm"
+              >
+                Хіт
+              </div>
+            </div>
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+              >
+                Сендвічі
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">
+                Big Mexicano
+              </h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Гострий сендвіч з куркою, халапеньйо, сиром та спеціальним
+                соусом.
+              </p>
+              <button
+                onclick="addToCart('Сендвіч Big Mexicano', 7.5)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ITEM 5 -->
+          <div
+            class="menu-item sandwich group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1553909489-cd47ce7fa5d5?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Ham Sandwich"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
+              >
+                CHF 6.20
+              </div>
+            </div>
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+              >
+                Сендвічі
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">
+                Сендвіч з шинкою
+              </h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Класичний сендвіч з фермерською шинкою, сиром Грюєр та свіжим
+                салатом.
+              </p>
+              <button
+                onclick="addToCart('Сендвіч з шинкою', 6.2)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ITEM 6 -->
+          <div
+            class="menu-item drink group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Espresso"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
+              >
+                CHF 3.20
+              </div>
+            </div>
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+              >
+                Напої
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">Еспресо</h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Міцна та ароматна кава зі свіжообсмажених зерен 100% арабіки.
+              </p>
+              <button
+                onclick="addToCart('Еспресо', 3.2)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ITEM 7 -->
+          <div
+            class="menu-item drink group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1534687941688-19208f8e523b?q=80&w=400&auto=format&fit=crop"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                alt="Cappuccino"
+              />
+              <div
+                class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
+              >
+                CHF 4.10
+              </div>
+            </div>
+            <div class="p-5">
+              <div
+                class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+              >
+                Напої
+              </div>
+              <h3 class="text-lg font-bold text-amber-900 mb-2">Капучино</h3>
+              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
+                Еспресо з ідеально збитим молоком та ніжною пінкою.
+              </p>
+              <button
+                onclick="addToCart('Капучино', 4.1)"
+                class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+              >
+                <span>Додати в кошик</span>
+                <span class="text-lg">+</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -640,6 +788,34 @@
       }
       function closeSuccess() {
         document.getElementById("success-modal").classList.add("hidden");
+      }
+
+      function filterMenu(category) {
+        // Update tabs
+        document.querySelectorAll(".menu-tab").forEach((tab) => {
+          tab.classList.remove("bg-amber-800", "text-white");
+          tab.classList.add("bg-white", "text-amber-800");
+        });
+        event.currentTarget.classList.remove("bg-white", "text-amber-800");
+        event.currentTarget.classList.add("bg-amber-800", "text-white");
+
+        // Filter items
+        const items = document.querySelectorAll(".menu-item");
+        items.forEach((item) => {
+          if (category === "all" || item.classList.contains(category)) {
+            item.style.display = "block";
+            setTimeout(() => {
+              item.style.opacity = "1";
+              item.style.transform = "scale(1)";
+            }, 50);
+          } else {
+            item.style.opacity = "0";
+            item.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              item.style.display = "none";
+            }, 300);
+          }
+        });
       }
     </script>
   </body>

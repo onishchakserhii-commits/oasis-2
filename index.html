@@ -1,38 +1,10 @@
 <!doctype html>
-<html lang="uk">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boulangerie L'Oasis - Монтре, Швейцарія</title>
-    <script src="https://cdn.tailwindcss.com">
-      function filterMenu(category) {
-        // Update tabs
-        document.querySelectorAll('.menu-tab').forEach(tab => {
-          tab.classList.remove('bg-amber-800', 'text-white');
-          tab.classList.add('bg-white', 'text-amber-800');
-        });
-        event.currentTarget.classList.remove('bg-white', 'text-amber-800');
-        event.currentTarget.classList.add('bg-amber-800', 'text-white');
-
-        // Filter items
-        const items = document.querySelectorAll('.menu-item');
-        items.forEach(item => {
-          if (category === 'all' || item.classList.contains(category)) {
-            item.style.display = 'block';
-            setTimeout(() => {
-              item.style.opacity = '1';
-              item.style.transform = 'scale(1)';
-            }, 50);
-          } else {
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 300);
-          }
-        });
-      }
-    </script>
+    <title>Boulangerie L'Oasis - Montreux, Suisse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       .hero-bg {
         background-image:
@@ -56,14 +28,76 @@
           >
         </div>
         <nav class="hidden md:flex gap-6 font-medium">
-          <a href="#about" class="hover:text-amber-600 transition">Про нас</a>
-          <a href="#menu" class="hover:text-amber-600 transition">Меню</a>
-          <a href="#reviews" class="hover:text-amber-600 transition">Відгуки</a>
-          <a href="#contacts" class="hover:text-amber-600 transition"
-            >Контакти</a
+          <a
+            href="#about"
+            class="hover:text-amber-600 transition"
+            data-i18n="nav_about"
+            >À propos</a
+          >
+          <a
+            href="#menu"
+            class="hover:text-amber-600 transition"
+            data-i18n="nav_menu"
+            >Menu</a
+          >
+          <a
+            href="#reviews"
+            class="hover:text-amber-600 transition"
+            data-i18n="nav_reviews"
+            >Avis</a
+          >
+          <a
+            href="#contacts"
+            class="hover:text-amber-600 transition"
+            data-i18n="nav_contacts"
+            >Contacts</a
           >
         </nav>
         <div class="flex items-center gap-4">
+          <!-- Language Switcher -->
+          <div class="relative group">
+            <button
+              class="flex items-center gap-1 text-amber-800 font-medium hover:text-amber-600 transition"
+            >
+              <span id="current-lang-icon">🇫🇷</span>
+              <span id="current-lang-text" class="text-sm">FR</span>
+              <span class="text-xs">▼</span>
+            </button>
+            <div
+              class="absolute right-0 mt-2 w-32 bg-white border border-amber-100 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 flex flex-col py-1 overflow-hidden"
+            >
+              <button
+                onclick="setLang('fr')"
+                class="text-left px-4 py-2 text-sm hover:bg-amber-50 text-amber-900"
+              >
+                🇫🇷 Français
+              </button>
+              <button
+                onclick="setLang('en')"
+                class="text-left px-4 py-2 text-sm hover:bg-amber-50 text-amber-900"
+              >
+                🇬🇧 English
+              </button>
+              <button
+                onclick="setLang('de')"
+                class="text-left px-4 py-2 text-sm hover:bg-amber-50 text-amber-900"
+              >
+                🇩🇪 Deutsch
+              </button>
+              <button
+                onclick="setLang('it')"
+                class="text-left px-4 py-2 text-sm hover:bg-amber-50 text-amber-900"
+              >
+                🇮🇹 Italiano
+              </button>
+              <button
+                onclick="setLang('uk')"
+                class="text-left px-4 py-2 text-sm hover:bg-amber-50 text-amber-900"
+              >
+                🇺🇦 Українська
+              </button>
+            </div>
+          </div>
           <a
             href="tel:+41219633547"
             class="hidden sm:inline bg-amber-700 hover:bg-amber-800 text-white px-4 py-2 rounded-full text-sm font-medium transition shadow-sm"
@@ -83,61 +117,84 @@
         </div>
       </div>
     </header>
+
     <section
       class="hero-bg bg-cover bg-center text-white py-24 px-4 text-center"
     >
       <div class="max-w-3xl mx-auto">
         <span
           class="bg-amber-600/90 text-xs uppercase tracking-widest px-3 py-1 rounded-full font-semibold"
-          >Справжня швейцарська випічка</span
+          data-i18n="hero_badge"
+          >Authentique pâtisserie suisse</span
         >
         <h1
           class="text-4xl md:text-5xl font-serif font-bold mt-4 mb-6 leading-tight"
+          data-i18n="hero_title"
         >
-          Ласкаво просимо до Boulangerie L'Oasis
+          Bienvenue à la Boulangerie L'Oasis
         </h1>
-        <p class="text-lg md:text-xl text-amber-100 mb-8 max-w-2xl mx-auto">
-          Затишна пекарня в самому серці Монтре. Свіжі круасани, фірмові
-          сендвічі та запашна кава щодня.
+        <p
+          class="text-lg md:text-xl text-amber-100 mb-8 max-w-2xl mx-auto"
+          data-i18n="hero_desc"
+        >
+          Une boulangerie chaleureuse au cœur de Montreux. Croissants frais,
+          sandwichs signatures et café aromatique tous les jours.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#menu"
             class="bg-amber-600 hover:bg-amber-700 text-white font-medium px-8 py-3 rounded-lg transition shadow-md"
-            >Замовити з меню</a
+            data-i18n="hero_btn_menu"
+            >Commander</a
           >
           <a
             href="#contacts"
             class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-medium px-8 py-3 rounded-lg transition backdrop-blur-sm"
-            >Де нас знайти</a
+            data-i18n="hero_btn_find"
+            >Nous trouver</a
           >
         </div>
       </div>
     </section>
+
     <section id="about" class="py-16 px-4 max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-3xl font-serif font-bold text-amber-800 mb-6">
-            Куточок тепла та смаку в Монтре
+          <h2
+            class="text-3xl font-serif font-bold text-amber-800 mb-6"
+            data-i18n="about_title"
+          >
+            Un coin de chaleur et de saveur à Montreux
           </h2>
-          <p class="text-amber-950/80 leading-relaxed mb-4">
-            Пекарня Boulangerie L'Oasis, розташована на Avenue des Alpes у
-            мальовничому місті Монтре (Швейцарія), є улюбленим місцем відпочинку
-            та перекусу. Ми пропонуємо відвідувачам асортимент свіжої випічки,
-            хрустких круасанів та ситних гарячих чи холодних сендвічів за
-            розумними цінами.
+          <p
+            class="text-amber-950/80 leading-relaxed mb-4"
+            data-i18n="about_p1"
+          >
+            La Boulangerie L'Oasis, située sur l'Avenue des Alpes dans la ville
+            pittoresque de Montreux (Suisse), est un lieu de détente et de
+            restauration très apprécié. Nous proposons un assortiment de
+            pâtisseries fraîches, de croissants croustillants et de sandwichs
+            copieux chauds ou froids à des prix raisonnables.
           </p>
-          <p class="text-amber-950/80 leading-relaxed mb-6">
-            У партнерстві з програмою Too Good To Go ми робимо внесок у
-            збереження екології та зменшення залишків їжі, пропонуючи наші свіжі
-            вироби наприкінці робочого дня за зниженими цінами.
+          <p
+            class="text-amber-950/80 leading-relaxed mb-6"
+            data-i18n="about_p2"
+          >
+            En partenariat avec le programme Too Good To Go, nous contribuons à
+            préserver l'environnement et à réduire le gaspillage alimentaire en
+            proposant nos produits frais en fin de journée à des prix réduits.
           </p>
           <div class="flex gap-4 items-center">
             <div class="bg-amber-100 p-3 rounded-full text-amber-800">
               <span class="text-xl">📍</span>
             </div>
             <div>
-              <h4 class="font-bold text-amber-800">Наша адреса:</h4>
+              <h4
+                class="font-bold text-amber-800"
+                data-i18n="about_address_title"
+              >
+                Notre adresse :
+              </h4>
               <p class="text-sm text-amber-900/70">
                 Avenue des Alpes 51, 1820 Montreux, Switzerland
               </p>
@@ -148,53 +205,60 @@
           <img
             src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=400&auto=format&fit=crop"
             class="rounded-lg shadow-md object-cover h-48 w-full"
-            alt="Внутрішній вигляд пекарні"
+            alt="Bakery interior"
           />
           <img
             src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
             class="rounded-lg shadow-md object-cover h-48 w-full"
-            alt="Свіжий хліб"
+            alt="Fresh bread"
           />
         </div>
       </div>
     </section>
+
     <section id="menu" class="bg-amber-100/50 py-16 px-4">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-serif font-bold text-amber-800">
-            Наше Меню
+          <h2
+            class="text-3xl font-serif font-bold text-amber-800"
+            data-i18n="menu_title"
+          >
+            Notre Menu
           </h2>
-          <p class="text-amber-900/60 mt-2">
-            Виберіть улюблені страви та додайте їх до кошика для швидкого
-            замовлення
+          <p class="text-amber-900/60 mt-2" data-i18n="menu_subtitle">
+            Choisissez vos plats préférés et ajoutez-les à votre panier pour une
+            commande rapide
           </p>
         </div>
 
-        <!-- FILTER TABS -->
         <div class="flex flex-wrap justify-center gap-4 mb-10">
           <button
             onclick="filterMenu('all')"
             class="menu-tab active px-6 py-2 rounded-full bg-amber-800 text-white font-medium shadow-md transition hover:bg-amber-700"
+            data-i18n="tab_all"
           >
-            Всі страви
+            Tous les plats
           </button>
           <button
             onclick="filterMenu('pastry')"
             class="menu-tab px-6 py-2 rounded-full bg-white text-amber-800 font-medium shadow-sm transition hover:bg-amber-50"
+            data-i18n="tab_pastry"
           >
-            Випічка
+            Pâtisserie
           </button>
           <button
             onclick="filterMenu('sandwich')"
             class="menu-tab px-6 py-2 rounded-full bg-white text-amber-800 font-medium shadow-sm transition hover:bg-amber-50"
+            data-i18n="tab_sandwich"
           >
-            Сендвічі
+            Sandwichs
           </button>
           <button
             onclick="filterMenu('drink')"
             class="menu-tab px-6 py-2 rounded-full bg-white text-amber-800 font-medium shadow-sm transition hover:bg-amber-50"
+            data-i18n="tab_drink"
           >
-            Напої
+            Boissons
           </button>
         </div>
 
@@ -202,7 +266,7 @@
           class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           id="menu-grid"
         >
-          <!-- ITEM 1 -->
+          <!-- Item 1 -->
           <div
             class="menu-item pastry group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -221,27 +285,33 @@
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_pastry"
               >
-                Випічка
+                Pâtisserie
               </div>
-              <h3 class="text-lg font-bold text-amber-900 mb-2">
-                Класичний круасан
+              <h3
+                class="text-lg font-bold text-amber-900 mb-2"
+                data-i18n="item_croissant"
+              >
+                Croissant classique
               </h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Хрусткий зовні та ніжний всередині, випечений за традиційним
-                французьким рецептом.
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_croissant"
+              >
+                Croustillant à l'extérieur et tendre à l'intérieur, cuit selon
+                une recette française traditionnelle.
               </p>
               <button
-                onclick="addToCart('Класичний круасан', 1.8)"
+                onclick="addToCart('item_croissant', 1.8)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
-
-          <!-- ITEM 2 -->
+          <!-- Item 2 -->
           <div
             class="menu-item pastry group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -260,27 +330,29 @@
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_pastry"
               >
-                Випічка
+                Pâtisserie
               </div>
               <h3 class="text-lg font-bold text-amber-900 mb-2">
                 Pain au chocolat
               </h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Класичний шоколадний хлібець зі справжнім швейцарським
-                шоколадом.
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_pain"
+              >
+                Pain au chocolat classique avec du vrai chocolat suisse.
               </p>
               <button
-                onclick="addToCart('Pain au chocolat', 2.2)"
+                onclick="addToCart('item_pain', 2.2)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
-
-          <!-- ITEM 3 -->
+          <!-- Item 3 -->
           <div
             class="menu-item pastry group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -299,26 +371,33 @@
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_pastry"
               >
-                Випічка
+                Pâtisserie
               </div>
-              <h3 class="text-lg font-bold text-amber-900 mb-2">
-                Сіннабон з корицею
+              <h3
+                class="text-lg font-bold text-amber-900 mb-2"
+                data-i18n="item_cinnabon"
+              >
+                Cinnabon à la cannelle
               </h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Пухка булочка з ароматною корицею та ніжним вершковим кремом.
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_cinnabon"
+              >
+                Brioche moelleuse avec de la cannelle parfumée et une crème
+                onctueuse.
               </p>
               <button
-                onclick="addToCart('Сіннабон з корицею', 3.5)"
+                onclick="addToCart('item_cinnabon', 3.5)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
-
-          <!-- ITEM 4 -->
+          <!-- Item 4 -->
           <div
             class="menu-item sandwich group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -326,7 +405,7 @@
               <img
                 src="https://images.unsplash.com/photo-1619860860774-1e2855a32254?q=80&w=400&auto=format&fit=crop"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                alt="Sandwich"
+                alt="Big Mexicano"
               />
               <div
                 class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-amber-900 font-bold text-sm shadow-sm"
@@ -335,34 +414,38 @@
               </div>
               <div
                 class="absolute top-3 left-3 bg-red-500 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shadow-sm"
+                data-i18n="badge_hit"
               >
-                Хіт
+                HIT
               </div>
             </div>
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_sandwich"
               >
-                Сендвічі
+                Sandwichs
               </div>
               <h3 class="text-lg font-bold text-amber-900 mb-2">
                 Big Mexicano
               </h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Гострий сендвіч з куркою, халапеньйо, сиром та спеціальним
-                соусом.
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_mexicano"
+              >
+                Sandwich épicé avec du poulet, des piments jalapeño, du fromage
+                et une sauce spéciale.
               </p>
               <button
-                onclick="addToCart('Сендвіч Big Mexicano', 7.5)"
+                onclick="addToCart('item_mexicano', 7.5)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
-
-          <!-- ITEM 5 -->
+          <!-- Item 5 -->
           <div
             class="menu-item sandwich group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -381,27 +464,33 @@
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_sandwich"
               >
-                Сендвічі
+                Sandwichs
               </div>
-              <h3 class="text-lg font-bold text-amber-900 mb-2">
-                Сендвіч з шинкою
+              <h3
+                class="text-lg font-bold text-amber-900 mb-2"
+                data-i18n="item_ham"
+              >
+                Sandwich au jambon
               </h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Класичний сендвіч з фермерською шинкою, сиром Грюєр та свіжим
-                салатом.
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_ham"
+              >
+                Sandwich classique avec du jambon fermier, du fromage Gruyère et
+                de la salade fraîche.
               </p>
               <button
-                onclick="addToCart('Сендвіч з шинкою', 6.2)"
+                onclick="addToCart('item_ham', 6.2)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
-
-          <!-- ITEM 6 -->
+          <!-- Item 6 -->
           <div
             class="menu-item drink group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -420,24 +509,28 @@
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_drink"
               >
-                Напої
+                Boissons
               </div>
-              <h3 class="text-lg font-bold text-amber-900 mb-2">Еспресо</h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Міцна та ароматна кава зі свіжообсмажених зерен 100% арабіки.
+              <h3 class="text-lg font-bold text-amber-900 mb-2">Espresso</h3>
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_espresso"
+              >
+                Un café fort et aromatique fait avec des grains 100% Arabica
+                fraîchement torréfiés.
               </p>
               <button
-                onclick="addToCart('Еспресо', 3.2)"
+                onclick="addToCart('item_espresso', 3.2)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
-
-          <!-- ITEM 7 -->
+          <!-- Item 7 -->
           <div
             class="menu-item drink group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 transform hover:-translate-y-1"
           >
@@ -456,25 +549,32 @@
             <div class="p-5">
               <div
                 class="text-xs text-amber-600 font-bold tracking-wider uppercase mb-1"
+                data-i18n="cat_drink"
               >
-                Напої
+                Boissons
               </div>
-              <h3 class="text-lg font-bold text-amber-900 mb-2">Капучино</h3>
-              <p class="text-sm text-amber-900/60 mb-4 line-clamp-2">
-                Еспресо з ідеально збитим молоком та ніжною пінкою.
+              <h3 class="text-lg font-bold text-amber-900 mb-2">Cappuccino</h3>
+              <p
+                class="text-sm text-amber-900/60 mb-4 line-clamp-2"
+                data-i18n="desc_cappuccino"
+              >
+                Espresso avec du lait parfaitement moussé et une mousse
+                délicate.
               </p>
               <button
-                onclick="addToCart('Капучино', 4.1)"
+                onclick="addToCart('item_cappuccino', 4.1)"
                 class="w-full py-2.5 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-800 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                <span>Додати в кошик</span>
-                <span class="text-lg">+</span>
+                <span data-i18n="btn_add">Ajouter</span
+                ><span class="text-lg">+</span>
               </button>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Cart and Modals -->
     <div
       id="cart-backdrop"
       onclick="toggleCart(false)"
@@ -490,7 +590,7 @@
         <h3
           class="text-lg font-serif font-bold text-amber-800 flex items-center gap-2"
         >
-          🛒 Ваше замовлення
+          🛒 <span data-i18n="cart_title">Votre commande</span>
         </h3>
         <button
           onclick="toggleCart(false)"
@@ -500,22 +600,28 @@
         </button>
       </div>
       <div id="cart-items" class="p-6 overflow-y-auto flex-1 space-y-4">
-        <p class="text-amber-900/50 text-center py-8">Кошик порожній</p>
+        <p class="text-amber-900/50 text-center py-8" data-i18n="cart_empty">
+          Le panier est vide
+        </p>
       </div>
       <div class="p-6 border-t border-amber-100 bg-amber-50 space-y-4">
         <div class="flex justify-between text-base font-bold text-amber-950">
-          <span>Загалом:</span> <span id="cart-total">CHF 0.00</span>
+          <span data-i18n="cart_total">Total :</span>
+          <span id="cart-total">CHF 0.00</span>
         </div>
         <button
           id="checkout-btn"
           onclick="openCheckout()"
           class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 rounded-xl transition shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
           disabled
+          data-i18n="cart_checkout"
         >
-          Оформити замовлення
+          Passer la commande
         </button>
       </div>
     </div>
+
+    <!-- Checkout -->
     <div
       id="checkout-modal"
       class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4 hidden"
@@ -530,16 +636,18 @@
           &times;
         </button>
         <h3 class="text-xl font-serif font-bold text-amber-800 mb-2">
-          📦 Контактні дані для самовивозу
+          📦 <span data-i18n="checkout_title">Coordonnées de retrait</span>
         </h3>
-        <p class="text-xs text-amber-950/60">
-          Ваше замовлення буде зібрано та чекатиме на вас у пекарні за адресою:
-          <strong>Avenue des Alpes 51, Montreux</strong>.
+        <p class="text-xs text-amber-950/60" data-i18n="checkout_desc">
+          Votre commande sera préparée et vous attendra à la boulangerie à
+          l'adresse : <strong>Avenue des Alpes 51, Montreux</strong>.
         </p>
         <form onsubmit="submitOrder(event)" class="space-y-3">
           <div>
-            <label class="block text-xs font-bold text-amber-800 uppercase mb-1"
-              >Ваше ім'я</label
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="checkout_name"
+              >Votre nom</label
             >
             <input
               required
@@ -549,8 +657,10 @@
             />
           </div>
           <div>
-            <label class="block text-xs font-bold text-amber-800 uppercase mb-1"
-              >Номер телефону</label
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="checkout_phone"
+              >Numéro de téléphone</label
             >
             <input
               required
@@ -561,8 +671,10 @@
             />
           </div>
           <div>
-            <label class="block text-xs font-bold text-amber-800 uppercase mb-1"
-              >Час самовивозу (Сьогодні)</label
+            <label
+              class="block text-xs font-bold text-amber-800 uppercase mb-1"
+              data-i18n="checkout_time"
+              >Heure de retrait (Aujourd'hui)</label
             >
             <input
               required
@@ -576,12 +688,15 @@
           <button
             type="submit"
             class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 rounded-xl transition shadow-md mt-4"
+            data-i18n="checkout_confirm"
           >
-            Підтвердити замовлення
+            Confirmer la commande
           </button>
         </form>
       </div>
     </div>
+
+    <!-- Success -->
     <div
       id="success-modal"
       class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4 hidden"
@@ -590,73 +705,107 @@
         class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl text-center space-y-4"
       >
         <div class="text-5xl">🎉</div>
-        <h3 class="text-xl font-serif font-bold text-amber-800">
-          Дякуємо за замовлення!
+        <h3
+          class="text-xl font-serif font-bold text-amber-800"
+          data-i18n="success_title"
+        >
+          Merci pour votre commande !
         </h3>
-        <p class="text-sm text-amber-950/80">
-          Ми розпочали підготовку вашої випічки. Чекаємо на вас у вказаний час
-          за адресою пекарні.
+        <p class="text-sm text-amber-950/80" data-i18n="success_desc">
+          Nous avons commencé à préparer vos pâtisseries. Nous vous attendons à
+          l'heure indiquée à la boulangerie.
         </p>
         <button
           onclick="closeSuccess()"
           class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-6 rounded-xl transition shadow-md"
+          data-i18n="success_btn"
         >
-          Зрозуміло
+          Compris
         </button>
       </div>
     </div>
+
+    <!-- Reviews -->
     <section id="reviews" class="py-16 px-4 max-w-6xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-serif font-bold text-amber-800">
-          Відгуки наших гостей
+        <h2
+          class="text-3xl font-serif font-bold text-amber-800"
+          data-i18n="reviews_title"
+        >
+          Avis de nos invités
         </h2>
-        <p class="text-amber-900/60 mt-2">
-          Рейтинг 4.8/5 на основі відгуків у Google
+        <p class="text-amber-900/60 mt-2" data-i18n="reviews_subtitle">
+          Note de 4.8/5 basée sur les avis Google
         </p>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-xl shadow-sm border border-amber-100">
           <div class="text-amber-400 mb-3">★★★★★</div>
-          <p class="text-sm text-amber-950/80 italic mb-4">
-            "Дійсно хороше місце поруч із вокзалом. Прекрасна випічка, смачні
-            сендвічі, свіжі круасани. Обслуговування приємне та швидке."
+          <p
+            class="text-sm text-amber-950/80 italic mb-4"
+            data-i18n="rev1_text"
+          >
+            "Un très bon endroit près de la gare. Belles pâtisseries, délicieux
+            sandwichs, croissants frais. Service agréable et rapide."
           </p>
           <div class="font-semibold text-amber-800 text-sm">Virginia Costa</div>
-          <div class="text-[11px] text-amber-900/50">Місцевий експерт</div>
+          <div class="text-[11px] text-amber-900/50" data-i18n="rev_expert">
+            Expert local
+          </div>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm border border-amber-100">
           <div class="text-amber-400 mb-3">★★★★★</div>
-          <p class="text-sm text-amber-950/80 italic mb-4">
-            "Один із найкращих закладів. Сендвічі виняткові, особливо Big
-            Mexicano. Кава дуже ароматна та якісна, а атмосфера дуже затишна."
+          <p
+            class="text-sm text-amber-950/80 italic mb-4"
+            data-i18n="rev2_text"
+          >
+            "L'un des meilleurs établissements. Les sandwichs sont
+            exceptionnels, surtout le Big Mexicano. Le café est très aromatique
+            et l'ambiance est très chaleureuse."
           </p>
           <div class="font-semibold text-amber-800 text-sm">Leni Tonerre</div>
-          <div class="text-[11px] text-amber-900/50">Мандрівник</div>
+          <div class="text-[11px] text-amber-900/50" data-i18n="rev_traveler">
+            Voyageur
+          </div>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm border border-amber-100">
           <div class="text-amber-400 mb-3">★★★★★</div>
-          <p class="text-sm text-amber-950/80 italic mb-4">
-            "Якісні продукти та привітний персонал. Завжди приємно завітати сюди
-            зранку на філіжанку кави зі свіжим круасаном."
+          <p
+            class="text-sm text-amber-950/80 italic mb-4"
+            data-i18n="rev3_text"
+          >
+            "Des produits de qualité et un personnel amical. Toujours un plaisir
+            de venir ici le matin pour une tasse de café avec un croissant
+            frais."
           </p>
           <div class="font-semibold text-amber-800 text-sm">Dounia Lola</div>
-          <div class="text-[11px] text-amber-900/50">Постійний клієнт</div>
+          <div class="text-[11px] text-amber-900/50" data-i18n="rev_regular">
+            Client régulier
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Contacts -->
     <section id="contacts" class="bg-amber-800 text-amber-50 py-16 px-4">
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
         <div>
-          <h2 class="text-3xl font-serif font-bold mb-6">Зв'яжіться з нами</h2>
-          <p class="text-amber-200 mb-8">
-            Будемо раді бачити вас у нашому закладі. Завітайте на сніданок, обід
-            або заберіть замовлення з собою!
+          <h2
+            class="text-3xl font-serif font-bold mb-6"
+            data-i18n="contact_title"
+          >
+            Contactez-nous
+          </h2>
+          <p class="text-amber-200 mb-8" data-i18n="contact_desc">
+            Nous serons heureux de vous accueillir dans notre établissement.
+            Venez pour le petit-déjeuner, le déjeuner ou prenez votre commande à
+            emporter !
           </p>
           <div class="space-y-4">
             <div class="flex items-start gap-3">
               <span class="text-xl">📍</span>
               <div>
-                <h4 class="font-bold">Адреса</h4>
+                <h4 class="font-bold" data-i18n="contact_addr">Adresse</h4>
                 <p class="text-amber-200 text-sm">
                   Avenue des Alpes 51, 1820 Montreux, Switzerland
                 </p>
@@ -665,7 +814,7 @@
             <div class="flex items-start gap-3">
               <span class="text-xl">📞</span>
               <div>
-                <h4 class="font-bold">Телефон</h4>
+                <h4 class="font-bold" data-i18n="contact_phone">Téléphone</h4>
                 <p class="text-amber-200 text-sm">
                   <a href="tel:+41219633547" class="hover:underline"
                     >+41 21 963 35 47</a
@@ -676,8 +825,15 @@
             <div class="flex items-start gap-3">
               <span class="text-xl">🕒</span>
               <div>
-                <h4 class="font-bold">Години роботи</h4>
-                <p class="text-amber-200 text-sm">Щодня: 07:00 – 20:00</p>
+                <h4 class="font-bold" data-i18n="contact_hours">
+                  Heures d'ouverture
+                </h4>
+                <p
+                  class="text-amber-200 text-sm"
+                  data-i18n="contact_hours_text"
+                >
+                  Tous les jours : 07:00 – 20:00
+                </p>
               </div>
             </div>
           </div>
@@ -697,15 +853,42 @@
         </div>
       </div>
     </section>
+
     <footer
       class="bg-amber-950 text-amber-200/60 text-center py-8 border-t border-amber-900 px-4 text-sm"
     >
-      <p>
-        &copy; 2026 Boulangerie L'Oasis. Всі права захищені. Створено з повагою
-        до швейцарських традицій випічки.
+      <p data-i18n="footer_copy">
+        &copy; 2026 Boulangerie L'Oasis. Tous droits réservés. Créé dans le
+        respect des traditions boulangères suisses.
       </p>
     </footer>
+
+    <script src="translations.js"></script>
     <script>
+      let currentLang = "fr";
+
+      function setLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        // Update switcher UI
+        const flags = { fr: "🇫🇷", en: "🇬🇧", de: "🇩🇪", it: "🇮🇹", uk: "🇺🇦" };
+        document.getElementById("current-lang-icon").innerText = flags[lang];
+        document.getElementById("current-lang-text").innerText =
+          lang.toUpperCase();
+
+        // Update all elements with data-i18n
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+
+        // Update cart UI to reflect language changes
+        updateCartUI();
+      }
+
       let cart = [];
       function toggleCart(show) {
         const drawer = document.getElementById("cart-drawer");
@@ -718,26 +901,26 @@
           backdrop.classList.add("hidden");
         }
       }
-      function addToCart(name, price) {
-        const existing = cart.find((i) => i.name === name);
+      function addToCart(key, price) {
+        const existing = cart.find((i) => i.key === key);
         if (existing) {
           existing.quantity += 1;
         } else {
-          cart.push({ name, price, quantity: 1 });
+          cart.push({ key, price, quantity: 1 });
         }
         updateCartUI();
         toggleCart(true);
       }
-      function removeFromCart(name) {
-        cart = cart.filter((i) => i.name !== name);
+      function removeFromCart(key) {
+        cart = cart.filter((i) => i.key !== key);
         updateCartUI();
       }
-      function changeQty(name, amount) {
-        const item = cart.find((i) => i.name === name);
+      function changeQty(key, amount) {
+        const item = cart.find((i) => i.key === key);
         if (item) {
           item.quantity += amount;
           if (item.quantity <= 0) {
-            removeFromCart(name);
+            removeFromCart(key);
           } else {
             updateCartUI();
           }
@@ -750,9 +933,12 @@
         const checkoutBtn = document.getElementById("checkout-btn");
         let total = 0;
         let totalQty = 0;
+
+        const emptyText =
+          translations[currentLang]?.cart_empty || "Le panier est vide";
+
         if (cart.length === 0) {
-          itemsContainer.innerHTML =
-            '<p class="text-amber-900/50 text-center py-8">Кошик порожній</p>';
+          itemsContainer.innerHTML = `<p class="text-amber-900/50 text-center py-8">${emptyText}</p>`;
           countBadge.classList.add("hidden");
           checkoutBtn.disabled = true;
         } else {
@@ -760,10 +946,25 @@
           cart.forEach((item) => {
             total += item.price * item.quantity;
             totalQty += item.quantity;
+
+            // Get translated name
+            const itemName = translations[currentLang]
+              ? translations[currentLang][item.key] || item.key
+              : item.key;
+
             const el = document.createElement("div");
             el.className =
               "flex justify-between items-center border-b border-amber-50 pb-3";
-            el.innerHTML = ` <div class="flex-1"> <h4 class="font-medium text-amber-950 text-sm">${item.name}</h4> <span class="text-xs text-amber-900/60">CHF ${item.price.toFixed(2)}</span> </div> <div class="flex items-center gap-2"> <button onclick="changeQty(\'${item.name}\', -1)" class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center hover:bg-amber-200 text-xs">-</button> <span class="text-sm font-bold w-6 text-center">${item.quantity}</span> <button onclick="changeQty(\'${item.name}\', 1)" class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center hover:bg-amber-200 text-xs">+</button> </div> `;
+            el.innerHTML = `
+              <div class="flex-1">
+                <h4 class="font-medium text-amber-950 text-sm">${itemName}</h4>
+                <span class="text-xs text-amber-900/60">CHF ${item.price.toFixed(2)}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="changeQty('${item.key}', -1)" class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center hover:bg-amber-200 text-xs">-</button>
+                <span class="text-sm font-bold w-6 text-center">${item.quantity}</span>
+                <button onclick="changeQty('${item.key}', 1)" class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center hover:bg-amber-200 text-xs">+</button>
+              </div>`;
             itemsContainer.appendChild(el);
           });
           countBadge.textContent = totalQty;
@@ -789,9 +990,7 @@
       function closeSuccess() {
         document.getElementById("success-modal").classList.add("hidden");
       }
-
       function filterMenu(category) {
-        // Update tabs
         document.querySelectorAll(".menu-tab").forEach((tab) => {
           tab.classList.remove("bg-amber-800", "text-white");
           tab.classList.add("bg-white", "text-amber-800");
@@ -799,7 +998,6 @@
         event.currentTarget.classList.remove("bg-white", "text-amber-800");
         event.currentTarget.classList.add("bg-amber-800", "text-white");
 
-        // Filter items
         const items = document.querySelectorAll(".menu-item");
         items.forEach((item) => {
           if (category === "all" || item.classList.contains(category)) {
@@ -817,6 +1015,9 @@
           }
         });
       }
+
+      // Initialize default language
+      setLang("fr");
     </script>
   </body>
 </html>

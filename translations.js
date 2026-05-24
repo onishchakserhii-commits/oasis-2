@@ -1,0 +1,423 @@
+const translations = {
+  fr: {
+    nav_about: "À propos",
+    nav_menu: "Menu",
+    nav_reviews: "Avis",
+    nav_contacts: "Contacts",
+    hero_badge: "Authentique pâtisserie suisse",
+    hero_title: "Bienvenue à la Boulangerie L'Oasis",
+    hero_desc:
+      "Une boulangerie chaleureuse au cœur de Montreux. Croissants frais, sandwichs signatures et café aromatique tous les jours.",
+    hero_btn_menu: "Commander",
+    hero_btn_find: "Nous trouver",
+    about_title: "Un coin de chaleur et de saveur à Montreux",
+    about_p1:
+      "La Boulangerie L'Oasis, située sur l'Avenue des Alpes dans la ville pittoresque de Montreux (Suisse), est un lieu de détente et de restauration très apprécié. Nous proposons un assortiment de pâtisseries fraîches, de croissants croustillants et de sandwichs copieux chauds ou froids à des prix raisonnables.",
+    about_p2:
+      "En partenariat avec le programme Too Good To Go, nous contribuons à préserver l'environnement et à réduire le gaspillage alimentaire en proposant nos produits frais en fin de journée à des prix réduits.",
+    about_address_title: "Notre adresse :",
+    menu_title: "Notre Menu",
+    menu_subtitle:
+      "Choisissez vos plats préférés et ajoutez-les à votre panier pour une commande rapide",
+    tab_all: "Tous",
+    tab_pastry: "Pâtisseries",
+    tab_sandwich: "Sandwichs",
+    tab_drink: "Boissons",
+    cat_pastry: "Pâtisserie",
+    cat_sandwich: "Sandwich",
+    cat_drink: "Boisson",
+    badge_hit: "HIT",
+    item_croissant: "Croissant classique",
+    desc_croissant:
+      "Croustillant à l'extérieur et tendre à l'intérieur, cuit selon une recette française traditionnelle.",
+    item_pain: "Pain au chocolat",
+    desc_pain: "Pain au chocolat classique avec du vrai chocolat suisse.",
+    item_cinnabon: "Cinnabon à la cannelle",
+    desc_cinnabon:
+      "Brioche moelleuse avec de la cannelle parfumée et une crème onctueuse.",
+    item_mexicano: "Big Mexicano",
+    desc_mexicano:
+      "Sandwich épicé avec du poulet, des piments jalapeño, du fromage et une sauce spéciale.",
+    item_ham: "Sandwich au jambon",
+    desc_ham:
+      "Sandwich classique avec du jambon fermier, du fromage Gruyère et de la salade fraîche.",
+    item_espresso: "Espresso",
+    desc_espresso:
+      "Un café fort et aromatique fait avec des grains 100% Arabica fraîchement torréfiés.",
+    item_cappuccino: "Cappuccino",
+    desc_cappuccino:
+      "Espresso avec du lait parfaitement moussé et une mousse délicate.",
+    btn_add: "Ajouter",
+    cart_title: "Votre commande",
+    cart_empty: "Le panier est vide",
+    cart_total: "Total :",
+    cart_checkout: "Passer la commande",
+    checkout_title: "Coordonnées de retrait",
+    checkout_desc:
+      "Votre commande sera préparée et vous attendra à la boulangerie à l'adresse : <strong>Avenue des Alpes 51, Montreux</strong>.",
+    checkout_name: "Votre nom",
+    checkout_phone: "Numéro de téléphone",
+    checkout_time: "Heure de retrait (Aujourd'hui)",
+    checkout_confirm: "Confirmer la commande",
+    success_title: "Merci pour votre commande !",
+    success_desc:
+      "Nous avons commencé à préparer vos pâtisseries. Nous vous attendons à l'heure indiquée à la boulangerie.",
+    success_btn: "Compris",
+    reviews_title: "Avis de nos invités",
+    reviews_subtitle: "Note de 4.8/5 basée sur les avis Google",
+    rev1_text:
+      "Un très bon endroit près de la gare. Belles pâtisseries, délicieux sandwichs, croissants frais. Service agréable et rapide.",
+    rev2_text:
+      "L'un des meilleurs établissements. Les sandwichs sont exceptionnels, surtout le Big Mexicano. Le café est très aromatique et l'ambiance est très chaleureuse.",
+    rev3_text:
+      "Des produits de qualité et un personnel amical. Toujours un plaisir de venir ici le matin pour une tasse de café avec un croissant frais.",
+    rev_expert: "Expert local",
+    rev_traveler: "Voyageur",
+    rev_regular: "Client régulier",
+    contact_title: "Contactez-nous",
+    contact_desc:
+      "Nous serons heureux de vous accueillir dans notre établissement. Venez pour le petit-déjeuner, le déjeuner ou prenez votre commande à emporter !",
+    contact_addr: "Adresse",
+    contact_phone: "Téléphone",
+    contact_hours: "Heures d'ouverture",
+    contact_hours_text: "Tous les jours : 07:00 – 20:00",
+    footer_copy:
+      "© 2026 Boulangerie L'Oasis. Tous droits réservés. Créé dans le respect des traditions boulangères suisses.",
+  },
+  en: {
+    nav_about: "About",
+    nav_menu: "Menu",
+    nav_reviews: "Reviews",
+    nav_contacts: "Contact",
+    hero_badge: "Authentic Swiss Bakery",
+    hero_title: "Welcome to Boulangerie L'Oasis",
+    hero_desc:
+      "A cozy bakery in the heart of Montreux. Fresh croissants, signature sandwiches, and aromatic coffee every day.",
+    hero_btn_menu: "Order Now",
+    hero_btn_find: "Find Us",
+    about_title: "A Corner of Warmth and Flavor in Montreux",
+    about_p1:
+      "Boulangerie L'Oasis, located on Avenue des Alpes in the picturesque town of Montreux (Switzerland), is a beloved spot for relaxing and eating. We offer an assortment of fresh pastries, crispy croissants, and hearty hot or cold sandwiches at reasonable prices.",
+    about_p2:
+      "Partnering with the Too Good To Go program, we contribute to preserving the environment and reducing food waste by offering our fresh products at the end of the day at discounted prices.",
+    about_address_title: "Our Address:",
+    menu_title: "Our Menu",
+    menu_subtitle:
+      "Choose your favorite dishes and add them to your cart for quick ordering",
+    tab_all: "All Items",
+    tab_pastry: "Pastries",
+    tab_sandwich: "Sandwiches",
+    tab_drink: "Drinks",
+    cat_pastry: "Pastry",
+    cat_sandwich: "Sandwich",
+    cat_drink: "Drink",
+    badge_hit: "HIT",
+    item_croissant: "Classic Croissant",
+    desc_croissant:
+      "Crispy on the outside and tender on the inside, baked according to a traditional French recipe.",
+    item_pain: "Pain au chocolat",
+    desc_pain: "Classic chocolate bread with real Swiss chocolate.",
+    item_cinnabon: "Cinnamon Roll",
+    desc_cinnabon: "Fluffy bun with fragrant cinnamon and creamy frosting.",
+    item_mexicano: "Big Mexicano",
+    desc_mexicano:
+      "Spicy sandwich with chicken, jalapeños, cheese, and special sauce.",
+    item_ham: "Ham Sandwich",
+    desc_ham:
+      "Classic sandwich with farm ham, Gruyère cheese, and fresh lettuce.",
+    item_espresso: "Espresso",
+    desc_espresso:
+      "Strong and aromatic coffee made from freshly roasted 100% Arabica beans.",
+    item_cappuccino: "Cappuccino",
+    desc_cappuccino: "Espresso with perfectly frothed milk and delicate foam.",
+    btn_add: "Add",
+    cart_title: "Your Order",
+    cart_empty: "Cart is empty",
+    cart_total: "Total:",
+    cart_checkout: "Checkout",
+    checkout_title: "Pickup Details",
+    checkout_desc:
+      "Your order will be prepared and waiting for you at the bakery: <strong>Avenue des Alpes 51, Montreux</strong>.",
+    checkout_name: "Your Name",
+    checkout_phone: "Phone Number",
+    checkout_time: "Pickup Time (Today)",
+    checkout_confirm: "Confirm Order",
+    success_title: "Thank you for your order!",
+    success_desc:
+      "We have started preparing your pastries. See you at the specified time at the bakery.",
+    success_btn: "Got it",
+    reviews_title: "Guest Reviews",
+    reviews_subtitle: "4.8/5 Rating based on Google reviews",
+    rev1_text:
+      "A really good place near the station. Beautiful pastries, delicious sandwiches, fresh croissants. Pleasant and fast service.",
+    rev2_text:
+      "One of the best places. Sandwiches are exceptional, especially the Big Mexicano. The coffee is very aromatic and the atmosphere is very cozy.",
+    rev3_text:
+      "Quality products and friendly staff. Always a pleasure to come here in the morning for a cup of coffee with a fresh croissant.",
+    rev_expert: "Local Expert",
+    rev_traveler: "Traveler",
+    rev_regular: "Regular Customer",
+    contact_title: "Contact Us",
+    contact_desc:
+      "We look forward to seeing you at our establishment. Come in for breakfast, lunch, or grab your order to go!",
+    contact_addr: "Address",
+    contact_phone: "Phone",
+    contact_hours: "Opening Hours",
+    contact_hours_text: "Daily: 07:00 – 20:00",
+    footer_copy:
+      "© 2026 Boulangerie L'Oasis. All rights reserved. Created with respect for Swiss baking traditions.",
+  },
+  de: {
+    nav_about: "Über uns",
+    nav_menu: "Speisekarte",
+    nav_reviews: "Bewertungen",
+    nav_contacts: "Kontakt",
+    hero_badge: "Authentische Schweizer Bäckerei",
+    hero_title: "Willkommen in der Boulangerie L'Oasis",
+    hero_desc:
+      "Eine gemütliche Bäckerei im Herzen von Montreux. Jeden Tag frische Croissants, besondere Sandwiches und aromatischer Kaffee.",
+    hero_btn_menu: "Bestellen",
+    hero_btn_find: "Zu uns finden",
+    about_title: "Ein Ort der Wärme und des Geschmacks in Montreux",
+    about_p1:
+      "Die Boulangerie L'Oasis an der Avenue des Alpes in der malerischen Stadt Montreux (Schweiz) ist ein beliebter Ort zum Entspannen und Essen. Wir bieten eine Auswahl an frischem Gebäck, knusprigen Croissants und herzhaften warmen oder kalten Sandwiches zu vernünftigen Preisen.",
+    about_p2:
+      "In Partnerschaft mit Too Good To Go tragen wir zum Umweltschutz bei und reduzieren Lebensmittelabfälle, indem wir unsere frischen Produkte am Ende des Tages zu reduzierten Preisen anbieten.",
+    about_address_title: "Unsere Adresse:",
+    menu_title: "Unsere Speisekarte",
+    menu_subtitle:
+      "Wählen Sie Ihre Lieblingsgerichte und fügen Sie sie für eine schnelle Bestellung Ihrem Warenkorb hinzu",
+    tab_all: "Alle Gerichte",
+    tab_pastry: "Gebäck",
+    tab_sandwich: "Sandwiches",
+    tab_drink: "Getränke",
+    cat_pastry: "Gebäck",
+    cat_sandwich: "Sandwich",
+    cat_drink: "Getränk",
+    badge_hit: "HIT",
+    item_croissant: "Klassisches Croissant",
+    desc_croissant:
+      "Außen knusprig und innen zart, nach traditionellem französischem Rezept gebacken.",
+    item_pain: "Pain au chocolat",
+    desc_pain: "Klassisches Schokoladenbrot mit echter Schweizer Schokolade.",
+    item_cinnabon: "Zimtschnecke",
+    desc_cinnabon: "Fluffiges Brötchen mit duftendem Zimt und cremiger Glasur.",
+    item_mexicano: "Big Mexicano",
+    desc_mexicano:
+      "Scharfes Sandwich mit Hähnchen, Jalapeños, Käse und Spezialsauce.",
+    item_ham: "Schinken-Sandwich",
+    desc_ham:
+      "Klassisches Sandwich mit Bauernschinken, Greyerzer Käse und frischem Salat.",
+    item_espresso: "Espresso",
+    desc_espresso:
+      "Starker und aromatischer Kaffee aus frisch gerösteten 100% Arabica-Bohnen.",
+    item_cappuccino: "Cappuccino",
+    desc_cappuccino:
+      "Espresso mit perfekt aufgeschäumter Milch und zartem Schaum.",
+    btn_add: "Hinzufügen",
+    cart_title: "Ihre Bestellung",
+    cart_empty: "Warenkorb ist leer",
+    cart_total: "Gesamt:",
+    cart_checkout: "Zur Kasse",
+    checkout_title: "Abholinformationen",
+    checkout_desc:
+      "Ihre Bestellung wird vorbereitet und wartet in der Bäckerei auf Sie: <strong>Avenue des Alpes 51, Montreux</strong>.",
+    checkout_name: "Ihr Name",
+    checkout_phone: "Telefonnummer",
+    checkout_time: "Abholzeit (Heute)",
+    checkout_confirm: "Bestellung bestätigen",
+    success_title: "Vielen Dank für Ihre Bestellung!",
+    success_desc:
+      "Wir haben mit der Zubereitung Ihres Gebäcks begonnen. Wir sehen uns zur angegebenen Zeit in der Bäckerei.",
+    success_btn: "Verstanden",
+    reviews_title: "Gästebewertungen",
+    reviews_subtitle: "4.8/5 Bewertung basierend auf Google-Bewertungen",
+    rev1_text:
+      "Ein wirklich guter Ort in der Nähe des Bahnhofs. Schönes Gebäck, leckere Sandwiches, frische Croissants. Angenehmer und schneller Service.",
+    rev2_text:
+      "Eines der besten Lokale. Die Sandwiches sind außergewöhnlich, besonders das Big Mexicano. Der Kaffee ist sehr aromatisch und die Atmosphäre sehr gemütlich.",
+    rev3_text:
+      "Hochwertige Produkte und freundliches Personal. Immer eine Freude, morgens auf eine Tasse Kaffee und ein frisches Croissant hierher zu kommen.",
+    rev_expert: "Lokaler Experte",
+    rev_traveler: "Reisender",
+    rev_regular: "Stammkunde",
+    contact_title: "Kontaktiere uns",
+    contact_desc:
+      "Wir freuen uns darauf, Sie in unserem Lokal zu sehen. Kommen Sie zum Frühstück, Mittagessen oder nehmen Sie Ihre Bestellung zum Mitnehmen!",
+    contact_addr: "Adresse",
+    contact_phone: "Telefon",
+    contact_hours: "Öffnungszeiten",
+    contact_hours_text: "Täglich: 07:00 – 20:00",
+    footer_copy:
+      "© 2026 Boulangerie L'Oasis. Alle Rechte vorbehalten. Erstellt mit Respekt für die Schweizer Backtradition.",
+  },
+  it: {
+    nav_about: "Chi siamo",
+    nav_menu: "Menu",
+    nav_reviews: "Recensioni",
+    nav_contacts: "Contatti",
+    hero_badge: "Autentica panetteria svizzera",
+    hero_title: "Benvenuti alla Boulangerie L'Oasis",
+    hero_desc:
+      "Un'accogliente panetteria nel cuore di Montreux. Croissant freschi, panini d'autore e caffè aromatico ogni giorno.",
+    hero_btn_menu: "Ordina ora",
+    hero_btn_find: "Dove siamo",
+    about_title: "Un angolo di calore e sapore a Montreux",
+    about_p1:
+      "La Boulangerie L'Oasis, situata in Avenue des Alpes nella pittoresca cittadina di Montreux (Svizzera), è un luogo amato per rilassarsi e mangiare. Offriamo un assortimento di dolci freschi, croissant croccanti e sostanziosi panini caldi o freddi a prezzi ragionevoli.",
+    about_p2:
+      "In collaborazione con il programma Too Good To Go, contribuiamo a preservare l'ambiente e ridurre lo spreco alimentare offrendo i nostri prodotti freschi a fine giornata a prezzi scontati.",
+    about_address_title: "Il nostro indirizzo:",
+    menu_title: "Il Nostro Menu",
+    menu_subtitle:
+      "Scegli i tuoi piatti preferiti e aggiungili al carrello per un ordine rapido",
+    tab_all: "Tutti i piatti",
+    tab_pastry: "Pasticceria",
+    tab_sandwich: "Panini",
+    tab_drink: "Bevande",
+    cat_pastry: "Pasticceria",
+    cat_sandwich: "Panino",
+    cat_drink: "Bevanda",
+    badge_hit: "TOP",
+    item_croissant: "Croissant classico",
+    desc_croissant:
+      "Croccante fuori e tenero dentro, cotto secondo la tradizionale ricetta francese.",
+    item_pain: "Pain au chocolat",
+    desc_pain: "Classico pane al cioccolato con vero cioccolato svizzero.",
+    item_cinnabon: "Girella alla cannella",
+    desc_cinnabon: "Soffice brioche con cannella profumata e crema al burro.",
+    item_mexicano: "Big Mexicano",
+    desc_mexicano:
+      "Panino piccante con pollo, jalapeños, formaggio e salsa speciale.",
+    item_ham: "Panino al prosciutto",
+    desc_ham:
+      "Panino classico con prosciutto contadino, formaggio Gruyère e insalata fresca.",
+    item_espresso: "Espresso",
+    desc_espresso:
+      "Caffè forte e aromatico ottenuto da chicchi 100% Arabica appena tostati.",
+    item_cappuccino: "Cappuccino",
+    desc_cappuccino:
+      "Espresso con latte perfettamente schiumato e schiuma delicata.",
+    btn_add: "Aggiungi",
+    cart_title: "Il tuo ordine",
+    cart_empty: "Il carrello è vuoto",
+    cart_total: "Totale:",
+    cart_checkout: "Alla cassa",
+    checkout_title: "Dettagli del ritiro",
+    checkout_desc:
+      "Il tuo ordine sarà preparato e ti aspetterà in panetteria: <strong>Avenue des Alpes 51, Montreux</strong>.",
+    checkout_name: "Il tuo nome",
+    checkout_phone: "Numero di telefono",
+    checkout_time: "Orario di ritiro (Oggi)",
+    checkout_confirm: "Conferma ordine",
+    success_title: "Grazie per il tuo ordine!",
+    success_desc:
+      "Abbiamo iniziato a preparare i tuoi dolci. Ci vediamo all'orario indicato in panetteria.",
+    success_btn: "Ricevuto",
+    reviews_title: "Recensioni degli ospiti",
+    reviews_subtitle: "Valutazione di 4.8/5 basata sulle recensioni di Google",
+    rev1_text:
+      "Un posto davvero buono vicino alla stazione. Bei dolci, deliziosi panini, croissant freschi. Servizio piacevole e veloce.",
+    rev2_text:
+      "Uno dei posti migliori. I panini sono eccezionali, in particolare il Big Mexicano. Il caffè è molto aromatico e l'atmosfera è molto accogliente.",
+    rev3_text:
+      "Prodotti di qualità e personale cordiale. È sempre un piacere venire qui la mattina per una tazza di caffè con un croissant fresco.",
+    rev_expert: "Esperto locale",
+    rev_traveler: "Viaggiatore",
+    rev_regular: "Cliente abituale",
+    contact_title: "Contattaci",
+    contact_desc:
+      "Non vediamo l'ora di vederti nel nostro locale. Vieni per colazione, pranzo o prendi il tuo ordine da asporto!",
+    contact_addr: "Indirizzo",
+    contact_phone: "Telefono",
+    contact_hours: "Orari di apertura",
+    contact_hours_text: "Tutti i giorni: 07:00 – 20:00",
+    footer_copy:
+      "© 2026 Boulangerie L'Oasis. Tutti i diritti riservati. Creato nel rispetto delle tradizioni di panificazione svizzere.",
+  },
+  uk: {
+    nav_about: "Про нас",
+    nav_menu: "Меню",
+    nav_reviews: "Відгуки",
+    nav_contacts: "Контакти",
+    hero_badge: "Справжня швейцарська випічка",
+    hero_title: "Ласкаво просимо до Boulangerie L'Oasis",
+    hero_desc:
+      "Затишна пекарня в самому серці Монтре. Свіжі круасани, фірмові сендвічі та запашна кава щодня.",
+    hero_btn_menu: "Замовити з меню",
+    hero_btn_find: "Де нас знайти",
+    about_title: "Куточок тепла та смаку в Монтре",
+    about_p1:
+      "Пекарня Boulangerie L'Oasis, розташована на Avenue des Alpes у мальовничому місті Монтре (Швейцарія), є улюбленим місцем відпочинку та перекусу. Ми пропонуємо відвідувачам асортимент свіжої випічки, хрустких круасанів та ситних гарячих чи холодних сендвічів за розумними цінами.",
+    about_p2:
+      "У партнерстві з програмою Too Good To Go ми робимо внесок у збереження екології та зменшення залишків їжі, пропонуючи наші свіжі вироби наприкінці робочого дня за зниженими цінами.",
+    about_address_title: "Наша адреса:",
+    menu_title: "Наше Меню",
+    menu_subtitle:
+      "Виберіть улюблені страви та додайте їх до кошика для швидкого замовлення",
+    tab_all: "Всі страви",
+    tab_pastry: "Випічка",
+    tab_sandwich: "Сендвічі",
+    tab_drink: "Напої",
+    cat_pastry: "Випічка",
+    cat_sandwich: "Сендвіч",
+    cat_drink: "Напій",
+    badge_hit: "ХІТ",
+    item_croissant: "Класичний круасан",
+    desc_croissant:
+      "Хрусткий зовні та ніжний всередині, випечений за традиційним французьким рецептом.",
+    item_pain: "Pain au chocolat",
+    desc_pain:
+      "Класичний шоколадний хлібець зі справжнім швейцарським шоколадом.",
+    item_cinnabon: "Сіннабон з корицею",
+    desc_cinnabon:
+      "Пухка булочка з ароматною корицею та ніжним вершковим кремом.",
+    item_mexicano: "Big Mexicano",
+    desc_mexicano:
+      "Гострий сендвіч з куркою, халапеньйо, сиром та спеціальним соусом.",
+    item_ham: "Сендвіч з шинкою",
+    desc_ham:
+      "Класичний сендвіч з фермерською шинкою, сиром Грюєр та свіжим салатом.",
+    item_espresso: "Еспресо (Expresso)",
+    desc_espresso:
+      "Міцна та ароматна кава зі свіжообсмажених зерен 100% арабіки.",
+    item_cappuccino: "Капучино",
+    desc_cappuccino: "Еспресо з ідеально збитим молоком та ніжною пінкою.",
+    btn_add: "Додати",
+    cart_title: "Ваше замовлення",
+    cart_empty: "Кошик порожній",
+    cart_total: "Загалом:",
+    cart_checkout: "Оформити замовлення",
+    checkout_title: "Контактні дані для самовивозу",
+    checkout_desc:
+      "Ваше замовлення буде зібрано та чекатиме на вас у пекарні за адресою: <strong>Avenue des Alpes 51, Montreux</strong>.",
+    checkout_name: "Ваше ім'я",
+    checkout_phone: "Номер телефону",
+    checkout_time: "Час самовивозу (Сьогодні)",
+    checkout_confirm: "Підтвердити замовлення",
+    success_title: "Дякуємо за замовлення!",
+    success_desc:
+      "Ми розпочали підготовку вашої випічки. Чекаємо на вас у вказаний час за адресою пекарні.",
+    success_btn: "Зрозуміло",
+    reviews_title: "Відгуки наших гостей",
+    reviews_subtitle: "Рейтинг 4.8/5 на основі відгуків у Google",
+    rev1_text:
+      "Дійсно хороше місце поруч із вокзалом. Прекрасна випічка, смачні сендвічі, свіжі круасани. Обслуговування приємне та швидке.",
+    rev2_text:
+      "Один із найкращих закладів. Сендвічі виняткові, особливо Big Mexicano. Кава дуже ароматна та якісна, а атмосфера дуже затишна.",
+    rev3_text:
+      "Якісні продукти та привітний персонал. Завжди приємно завітати сюди зранку на філіжанку кави зі свіжим круасаном.",
+    rev_expert: "Місцевий експерт",
+    rev_traveler: "Мандрівник",
+    rev_regular: "Постійний клієнт",
+    contact_title: "Зв'яжіться з нами",
+    contact_desc:
+      "Будемо раді бачити вас у нашому закладі. Завітайте на сніданок, обід або заберіть замовлення з собою!",
+    contact_addr: "Адреса",
+    contact_phone: "Телефон",
+    contact_hours: "Години роботи",
+    contact_hours_text: "Щодня: 07:00 – 20:00",
+    footer_copy:
+      "© 2026 Boulangerie L'Oasis. Всі права захищені. Створено з повагою до швейцарських традицій випічки.",
+  },
+};
